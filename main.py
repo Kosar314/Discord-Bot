@@ -43,6 +43,7 @@ async def load_extensions():
 
 
 @bot.command(name="sync")
+@commands.has_permissions(administrator=True)
 async def sync(ctx):
     synced = await bot.tree.sync()
     await ctx.send(f"Synced {len(synced)} command(s).")

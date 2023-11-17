@@ -15,11 +15,6 @@ class Everyone(commands.Cog):
 	async def ping(self, interaction: discord.Interaction):
 		bot_latency = round(self.bot.latency * 1000)
 		await interaction.response.send_message(f"Pong! {bot_latency} ms.")
-	
-	@app_commands.command(name="lol", description="test")
-	async def lol(self, interaction: discord.Interaction):
-		bot_latency = round(self.bot.latency * 1000)
-		await interaction.response.send_message(f"Pong! {bot_latency} ms.")
 
 
 async def setup(bot):
