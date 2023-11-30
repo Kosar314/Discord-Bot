@@ -10,6 +10,7 @@ class Everyone(commands.Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('everyone is ready')
+		
 
 	@app_commands.command(name="ping", description="pong")
 	async def ping(self, interaction: discord.Interaction):
