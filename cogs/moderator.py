@@ -1,8 +1,6 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
-import config
-
 
 class Moderator(commands.Cog):
 	def __init__(self, bot: commands.Bot):
@@ -20,16 +18,16 @@ class Moderator(commands.Cog):
 			
 	async def cog_app_command_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError) -> None:
 		if isinstance(error, app_commands.MissingPermissions):
-			await interaction.response.send_message("Недостаточно прав!", ephemeral=True)
+			await interaction.response.send_message("Недостаточно прав на выполнение данной команды!", ephemeral=True)
 		elif isinstance(error, app_commands.BotMissingPermissions):
-			await interaction.response.send_message("У Бота недостаточно прав на выполнение данной команды", ephemeral=True)
+			await interaction.response.send_message("У Бота недостаточно прав на выполнение данной команды!", ephemeral=True)
 		else:
 			await interaction.response.send_message("Произошла неизвестная ошибка", ephemeral=True)
 			print(error, '\n', error.__class__, '\n')
 
 
 	@app_commands.command(name="kick", description="Кикнуть участника")
-	@app_commands.checks.has_permissions(manage_members=True)
+	@app_commands.checks.has_permissions(administrator=True)
 	async def kick(self, interaction: discord.Interaction, *,
 				member: discord.Member,
 				reason: str = "просто потому-что"):
